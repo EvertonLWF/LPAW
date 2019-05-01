@@ -1,0 +1,15 @@
+html{
+	/**background-color: red;**/
+}
+canvas{
+	margin-left: 5%;
+	margin-top: 2%;
+	width: 90%;
+	height: 90%;
+	border: 1px solid #d3d3d3;
+	background-image: url("../img/sky.png");
+	background-repeat:no-repeat;
+	background-size: 100% 100%;
+	background-position: center;
+
+}
