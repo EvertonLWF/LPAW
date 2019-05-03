@@ -65,9 +65,10 @@ var backIndex = 0;
 var randonY = [];
 var randonRevY = [];
 var birdX = 0;
-var birdRevX = 1400;
+var birdRevX = 1300;
 var batida = 0;
 var gameOver = false;
+var cont = 0;
 but.src = "assets/img/but.png";
 bird.src = "assets/img/bird.png";
 birdRev.src = "assets/img/birdRev.png";
@@ -264,43 +265,35 @@ var game = setInterval(function(){
 			break;
 		}
 
+
+		/**  teste **/
 		for (var i = 1; i <= level; i++) {
-			if(i >= 1 ){
-				document.getElementById('bird8').play();
-			}
-			if (i >= 2 ) {
-				document.getElementById('bird3').play();
-			}
-			if (i >= 3) {
-				document.getElementById('bird4').play();
-			}
-			if (i >= 4) {
-				document.getElementById('bird5').play();
-			}
-			if (i >= 5) {
-				document.getElementById('bird6').play();
-			}
+			
 			
 			randonY.push(Math.floor(Math.random()*600));
 			randonRevY.push(Math.floor(Math.random()*600));
 			//console.log("Resto = "+i%2);
 			if((i%2) == 1 ){
+				
 				ctx.drawImage(bird,sx_Bird[indexBird],sy_Bird[indexBird],sWidth_Bird[indexBird],sWidth_Bird[indexBird],birdX * i ,randonY[i],70,70);
 				objetos[i] = [Math.trunc((parseInt(birdX * i))/10),Math.trunc((parseInt(randonY[i]))/10)];
-				if (i == level && level >=7 ) {
-					document.getElementById('comet').play();
-				}
+				
 			}else{
 
-				ctx.drawImage(birdRev,sx_BirdRev[indexBirdRev],sy_BirdRev[indexBirdRev],sWidth_BirdRev[indexBirdRev],sWidth_Bird[indexBirdRev],birdRevX * i ,randonRevY[i],70,70);
+				ctx.drawImage(birdRev,sx_BirdRev[indexBirdRev],sy_BirdRev[indexBirdRev],sWidth_BirdRev[indexBirdRev],sWidth_Bird[indexBirdRev],birdRevX * (i-1) ,randonRevY[i],70,70);
 				objetos[i] = [Math.trunc((parseInt(birdRevX * i))/10),Math.trunc((parseInt(randonRevY[i]))/10)];
-				if (i == level && level >=7 ) {
-					document.getElementById('comet').play();
-				}
+				
 			}
 			
 
 		}
+		
+		/** inicio teste**/
+
+		sons(level);
+
+
+		/** fim teste**/
 		if(tnt == false){
 
 			crash(objetos);
@@ -340,7 +333,7 @@ var game = setInterval(function(){
 		birdX+=10;
 		birdRevX-=10;
 		//console.log("birdRevX = "+birdRevX);
-		if (birdX > 1400 && birdRevX < 0) {
+		if (birdX > 1300 ) {
 			birdX = 0;
 			birdRevX = 1300;
 			randonY = [];
@@ -380,4 +373,26 @@ function crash(objetos){
 
 		}
 	}
+}
+
+function sons(i){
+	if(i >= 1 ){
+		document.getElementById('bird8').play();
+	}
+	if (i >= 2 ) {
+		document.getElementById('bird3').play();
+	}
+	if (i >= 3) {
+		document.getElementById('bird4').play();
+	}
+	if (i >= 4) {
+		document.getElementById('bird7').play();
+	}
+	if (i >= 5) {
+		document.getElementById('bird6').play();
+	}
+	if (i >= 7) {
+		document.getElementById('comet').play();
+	}
+	
 }
