@@ -60,6 +60,7 @@ var level = 1;
 var stop = true;
 var getDir = 0;
 var back = false;
+var direction = "left";
 var backIndex = 0;
 var randonY = [];
 var randonRevY = [];
@@ -119,7 +120,9 @@ canvas.addEventListener('keydown',function(e){
 var game = setInterval(function(){
 	if(indexExplode > 25 && birdX == 0 ){
 		clearInterval(game);
-		
+	}
+	if(indexExplode ==1){
+		document.getElementById('bang').play();
 	}
 	ctx.clearRect(0,0,1500,800);
 	if (stop == true){
@@ -134,6 +137,7 @@ var game = setInterval(function(){
 		}
 		ctx.fillText('Pressione as setas para começar !!!',380,50);
 	}else{
+		//console.log(direction);
 		switch(getDir){
 			case 0:
 			stop = true;
@@ -142,12 +146,12 @@ var game = setInterval(function(){
 			case 1:
 			stop = false;
 			if(tnt == false){
-				if(back==true){
-					ctx.drawImage(but,sx_Xor[index],sy_Xor[index],sW_Xor[index],sH_Xor[index],x,y,size,size);
-
-				}else{
+				if(direction == 'right'){
 
 					ctx.drawImage(but,sx_or[index],sy_or[index],sW_or[index],sH_or[index],x,y,size,size);
+				}else{
+					ctx.drawImage(but,sx_Xor[index],sy_Xor[index],sW_Xor[index],sH_Xor[index],x,y,size,size);
+
 				}
 				if(y > 0){
 					y -= 5;
@@ -165,9 +169,8 @@ var game = setInterval(function(){
 			break;
 
 			case 2:
+			direction = "right";
 			stop = false;
-
-
 			if(tnt == false){
 				if(back==true){
 					ctx.drawImage(but,sx_return[backIndex],sy_return[backIndex],sW_return[backIndex],sH_return[backIndex],x,y,size,size);
@@ -203,7 +206,7 @@ var game = setInterval(function(){
 			case 3:
 			stop = false;
 			if(tnt == false){
-				if(back==true){
+				if(direction == "left"){
 					ctx.drawImage(but,sx_Xor[index],sy_Xor[index],sW_Xor[index],sH_Xor[index],x,y,size,size);
 
 				}else{
@@ -225,6 +228,7 @@ var game = setInterval(function(){
 			break;
 
 			case 4:
+			direction = "left";
 			if(tnt == false){
 				if(back==true){
 					objeto[0] = Math.trunc(x/10);
@@ -261,16 +265,38 @@ var game = setInterval(function(){
 		}
 
 		for (var i = 1; i <= level; i++) {
-
-			randonY.push(Math.floor(Math.random()*650));
-			randonRevY.push(Math.floor(Math.random()*650));
+			if(i >= 1 ){
+				document.getElementById('bird8').play();
+			}
+			if (i >= 2 ) {
+				document.getElementById('bird3').play();
+			}
+			if (i >= 3) {
+				document.getElementById('bird4').play();
+			}
+			if (i >= 4) {
+				document.getElementById('bird5').play();
+			}
+			if (i >= 5) {
+				document.getElementById('bird6').play();
+			}
+			
+			randonY.push(Math.floor(Math.random()*600));
+			randonRevY.push(Math.floor(Math.random()*600));
 			//console.log("Resto = "+i%2);
 			if((i%2) == 1 ){
 				ctx.drawImage(bird,sx_Bird[indexBird],sy_Bird[indexBird],sWidth_Bird[indexBird],sWidth_Bird[indexBird],birdX * i ,randonY[i],70,70);
 				objetos[i] = [Math.trunc((parseInt(birdX * i))/10),Math.trunc((parseInt(randonY[i]))/10)];
+				if (i == level && level >=7 ) {
+					document.getElementById('comet').play();
+				}
 			}else{
+
 				ctx.drawImage(birdRev,sx_BirdRev[indexBirdRev],sy_BirdRev[indexBirdRev],sWidth_BirdRev[indexBirdRev],sWidth_Bird[indexBirdRev],birdRevX * i ,randonRevY[i],70,70);
 				objetos[i] = [Math.trunc((parseInt(birdRevX * i))/10),Math.trunc((parseInt(randonRevY[i]))/10)];
+				if (i == level && level >=7 ) {
+					document.getElementById('comet').play();
+				}
 			}
 			
 
@@ -304,19 +330,19 @@ var game = setInterval(function(){
 		}else{
 			indexBird++;
 		}
-		if(indexBirdRev >= 12){
-			indexBirdRev = 0;
+		if(indexBirdRev <= 0){
+			indexBirdRev = 12;
 		}else{
-			indexBirdRev++;
+			indexBirdRev--;
 		}
 
 
 		birdX+=10;
 		birdRevX-=10;
-		console.log("birdRevX = "+birdRevX);
+		//console.log("birdRevX = "+birdRevX);
 		if (birdX > 1400 && birdRevX < 0) {
 			birdX = 0;
-			birdRevX = 1400;
+			birdRevX = 1300;
 			randonY = [];
 			if(tnt==false){
 				level++;
