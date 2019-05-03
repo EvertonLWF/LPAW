@@ -111,6 +111,9 @@ var game = setInterval(function(){
 		clearInterval(game);
 		
 	}
+	if(indexExplode == 1){
+		document.getElementById('bang').play();
+	}
 	ctx.clearRect(0,0,1500,800);
 	if (state == true){
 		ctx.drawImage(but,sx_or[start],sy_or[start],sW_or[start],sH_or[start],x,y,size,size);
