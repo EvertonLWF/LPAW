@@ -1,0 +1,69 @@
+.metades{
+	display:flex;
+}
+.metadeEsquerda{
+	width: 50%;
+	background-color: #ffabcd;
+}
+.metadeDireita{
+	width: 50%;
+	background-color: #ccafa3;
+}
+.metadeEsquerda:hover{
+	width: 75%;
+	background-color: #ffabcd;
+	transition: width 2s;
+}
+.metadeDireita:hover{
+	width: 75%;
+	background-color: #ccafa3;
+	transition: width 2s;
+}
+.elemento{
+	width: 100px;
+	height: 100px;
+	background-color: #ffabcd;
+	transition: ease, 1s, transform, 3s;
+	/*transition-timing-function: ease;*/
+	/*transition-delay:1s;*/
+	/*transition-property: transform;*/
+	/*transition-duration: 3s;*/
+}
+.elemento:hover{
+	transform: translate(100px,100px)scale(1.5,1.5)rotate(360deg);
+	/*translateY(100px)*/
+	/*scaleX(1.5) scaleY(1.5)*/
+	/*rotate(360deg);*/
+}
+.div1{
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+	background-color: red;
+	margin-right: 50%;
+	margin-top: 1px;
+	margin-left: 1px;
+	transition: ease, 1s, transform, 2s;
+	
+}
+.div1:hover{
+	width: 100px;
+	height: 100px;
+	background-color: yellow;
+	margin-right: 50%;
+	transform:translate(575px);
+	transition:ease, 1s, transform, 2s;
+}
+.div2{
+	width: 100px;
+	height: 100px;
+	background-color: blue;
+	float: left;
+	
+}
+.div3{
+	
+}
+.div4{
+	
+}
