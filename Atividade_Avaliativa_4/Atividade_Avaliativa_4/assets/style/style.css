@@ -1,0 +1,55 @@
+#canvas{
+	
+}
+#svg1{
+	width: 290px;
+	height: 160px;
+	position: absolute;
+	margin-top: -332px;
+	margin-left: 319px;
+}#svg{
+	width: 290px;
+	height: 160px;
+	position: absolute;
+	margin-top: -408px;
+	margin-left: 726px;
+}
+.energy{
+	display: none;
+}
+.energy1{
+	display: none;
+}
+.imgEnergy{
+	width: 32px;
+	height: 32px;
+	position: absolute;
+	margin-top: -338px;
+	margin-left: 1030px;
+}
+.linha2{
+	position: absolute;
+	margin-top: -302px;
+	margin-left: 100px;
+}
+
+.gear1{
+	display: none;
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	margin-top: -420px;
+	margin-left: 947px;
+	
+}.gear2{
+	display: unset;
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	margin-top: -420px;
+	margin-left: 947px;
+	
+}
+body{
+	background-color: grey;
+}
